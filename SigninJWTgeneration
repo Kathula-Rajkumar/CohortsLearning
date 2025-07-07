@@ -1,0 +1,48 @@
+const jwt = require('jsonwebtoken');
+const jwtpassword = "secret";
+const zod = require('zod');
+
+const emailSchema = zod.string().email();
+const passwordSchema = zod.string().min(6);
+
+function signJwt(username, password){
+  const usernameResponse = emailSchema.safeParse(username);
+  const passwordResponse = passwordSchema.safeParse(password);
+  if(!usernameResponse.success || !passwordResponse.success){
+    return null;
+  }
+  const signature = jwt.sign({username}, jwtpassword);
+  return signature;
+}
+
+
+const ans = signJwt("AHGHJSGDm", "12345");
+console.log(ans);
+
+//outputs 
+null -> because the inputs are not accurate and the password is having only 5 instead of 6
+
+
+const jwt = require('jsonwebtoken');
+const jwtpassword = "secret";
+const zod = require('zod');
+
+const emailSchema = zod.string().email();
+const passwordSchema = zod.string().min(6);
+
+function signJwt(username, password){
+  const usernameResponse = emailSchema.safeParse(username);
+  const passwordResponse = passwordSchema.safeParse(password);
+  if(!usernameResponse.success || !passwordResponse.success){
+    return null;
+  }
+  const signature = jwt.sign({username}, jwtpassword);
+  return signature;
+}
+
+
+const ans = signJwt("rajkumar@gmail.com", "123456");
+console.log(ans);
+
+// outputs 
+some random jwt token because inputs are match to the above code
