@@ -1,0 +1,16 @@
+try{
+   let a;
+   console.log(a.length());// exception occurs here
+   console.log("HI there from here");
+   
+}
+catch(e){
+   console.log("debugger coming here");
+}
+
+console.log("hello");
+
+//output
+
+debugger coming here
+hello
